@@ -1,0 +1,45 @@
+/* Write your CSS here */
+.list-items-container {
+  list-style-type: none;
+  width: 30%;
+}
+.card-item-container {
+  display: flex;
+  justify-content: space-between;
+  border-style: solid;
+  width: 80%;
+  padding: 16px;
+  border-width: 1px;
+  border-color: #b5b7c4;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.heading-time-container {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+.favorite-button {
+  background-color: transparent;
+  border-width: 0px;
+  margin-top: 16px;
+}
+.heading {
+  color: #171f46;
+  font-size: 21px;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+.date {
+  color: #b5b7c4;
+  font-size: 18px;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  .card-item-container {
+    width: 100%;
+  }
+  .list-items-container {
+    width: 100%;
+  }
+}
