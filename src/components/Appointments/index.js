@@ -27,12 +27,8 @@ class Appointments extends Component {
   }
 
   onClickStarredButton = () => {
-    this.setState(prevState => ({
-      starredButton: !prevState.starredButton,
-      appointmentList: prevState.appointmentList.filter(
-        eachItem => eachItem.isStarred === true,
-      ),
-    }))
+    const {starredButton} = this.state
+    this.setState({starredButton: !starredButton})
   }
 
   getAppointment = event => {
@@ -50,6 +46,15 @@ class Appointments extends Component {
       date: '',
     }))
   }
+  
+  getFilteredStarredList = () => {
+    const {appointmentList, starredButton} = this.state
+    if (starredButton) {
+      return appointmentList.filter(eachItem => eachItem.isStarred === true)
+    }
+    return appointmentList
+  }
+  
 
   render() {
     const {title, date, appointmentList, starredButton} = this.state
@@ -57,6 +62,7 @@ class Appointments extends Component {
     const buttonClassName = starredButton
       ? 'starred starred-button'
       : 'starred-button'
+    const filteredList = this.getFilteredStarredList()
     return (
       <div className="app-container">
         <div className="appointment-card-container">
@@ -111,7 +117,7 @@ class Appointments extends Component {
             </button>
           </div>
           <ul className="list-appointments-container">
-            {appointmentList.map(eachItem => (
+            {filteredList.map(eachItem => (
               <AppointmentItem
                 appointmentItem={eachItem}
                 toggleStarred={this.toggleStarred}
